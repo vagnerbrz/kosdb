@@ -21,7 +21,6 @@
                     <div class="flex flex-col justify-between p-4 leading-normal">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Olimpíadas</h5>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Aqui você acompanha as pontuação de todas as classes em tempo real.</p>
-                        <p class="text-yellow-500 text-sm">Função <span class="font-bold text-blue-500">Ver todos</span> em construção.</p>
                     </div>
                 </a>
             </div>

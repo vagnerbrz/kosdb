@@ -6,6 +6,7 @@ use App\Livewire\Settings\Profile;
 use App\Livewire\Site\Index;
 use App\Livewire\Site\Views;
 use App\Livewire\Stats\Bosses;
+use App\Livewire\Stats\ClasseRanking;
 use App\Livewire\Stats\Heros;
 use App\Livewire\Stats\Olimpiadas;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,7 @@ Route::get('/', Index::class)->name('home')->middleware(\App\Http\Middleware\Tra
 Route::get('/views', Views::class)->name('views');
 
 Route::get('olimpiadas', Olimpiadas::class)->name('olimpiadas');
+Route::get('olimpiadas/classe/{id}', ClasseRanking::class)->name('classe.ranking');
 Route::get('heros', Heros::class)->name('heros');
 Route::get('bosses', Bosses::class)->name('bosses');
 

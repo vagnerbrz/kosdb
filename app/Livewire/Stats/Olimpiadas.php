@@ -27,12 +27,19 @@ class Olimpiadas extends Component
             $players = collect($response->json());
 
             $this->groupedPlayers = $players
-            ->sortByDesc('olympiad_point')
-            ->groupBy(fn($player) => self::className($player['subjob0_class']))
-            ->map(function ($group) {
-                return $group->take(3);
+                ->sortByDesc('olympiad_point')
+                ->groupBy('subjob0_class')
+                ->mapWithKeys(function ($group, $classId) {
+                    $className = self::className($classId);
+                    return [
+                        $classId => [
+                            'id' => $classId,
+                            'name' => $className,
+                            'players' => $group->take(3)->values(),
+                        ]
+                    ];
             })
-            ->sortKeys(); // ordena as chaves (nomes das classes) alfabeticamente
+             ->sortKeys();
         } else {
             $this->groupedPlayers = collect();
         }

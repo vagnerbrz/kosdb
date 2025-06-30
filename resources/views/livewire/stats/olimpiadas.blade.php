@@ -34,18 +34,17 @@
 
     <div class="m-10">
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-2 " wire:poll.30s="poll">
-{{-- <div class="grid grid-cols-4 gap-4 p-2"> --}}
-    @forelse ($groupedPlayers as $classId => $players)
+    @foreach ($groupedPlayers as $group)
         <div class="w-full max-w-md bg-white border border-gray-200 rounded-lg shadow-sm p-6 dark:bg-zinc-800 dark:border-zinc-700">
             <div class="flex items-center justify-between mb-2">
-                <h5 class="text-xl font-bold leading-none text-zinc-900 dark:text-white">{{ $classId }}</h5>
-                <a href="#" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
+                <h5 class="text-xl font-bold leading-none text-zinc-900 dark:text-white">{{ $group['name'] }}</h5>
+                <a href="{{ route('classe.ranking', $group['id']) }}" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
                     Ver todos
                 </a>
             </div>
             <div class="flow-root">
                 <ul role="list" class="divide-y divide-zinc-200 dark:divide-zinc-700">
-                    @foreach ($players as $key => $player)
+                    @foreach ($group['players'] as $key => $player)
                         <li class="py-1 sm:py-2">
                             <div class="flex items-center">
                                 <div class="shrink-0">
@@ -62,7 +61,7 @@
                                         {{ $player['char_name'] }}
                                     </p>
                                 </div>
-                                <div class="inline-flex items-center text-base font-semibold text-zinc-900 dark:text-green-400">
+                                <div class="inline-flex items-center text-base font-semibold text-green-600 dark:text-green-400">
                                     {{ $player['olympiad_point'] }}
                                 </div>
                             </div>
@@ -71,9 +70,7 @@
                 </ul>
             </div>
         </div>
-    @empty
-        <p>Nenhum dado encontrado.</p>
-    @endforelse
+    @endforeach
 
 
     </div>
