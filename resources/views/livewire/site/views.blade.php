@@ -40,5 +40,6 @@
                 <p class="text-gray-500 mt-2">Nas últimas 24 horas</p>
             </div>
         </div>
+        
     </div>
 </div>
