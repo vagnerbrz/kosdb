@@ -9,6 +9,7 @@ use App\Livewire\Stats\Bosses;
 use App\Livewire\Stats\ClasseRanking;
 use App\Livewire\Stats\Heros;
 use App\Livewire\Stats\Olimpiadas;
+use App\Livewire\Stats\Sieges;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -22,6 +23,7 @@ Route::get('olimpiadas', Olimpiadas::class)->name('olimpiadas');
 Route::get('olimpiadas/classe/{id}', ClasseRanking::class)->name('classe.ranking');
 Route::get('heros', Heros::class)->name('heros');
 Route::get('bosses', Bosses::class)->name('bosses');
+Route::get('sieges', Sieges::class)->name('sieges');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

@@ -32,7 +32,9 @@ class Bosses extends Component
                 ->map(function ($boss) {
                     $boss['display_name'] = self::bossName($boss['npc_db_name']);
                     $boss['respawn_time'] = $boss['alive'] == 0
-                        ? Carbon::createFromTimestamp($boss['time_low'])->format('d/m/Y H:i:s')
+                        ? Carbon::createFromTimestamp($boss['time_low'])
+                            ->timezone('-4') // ajusta para UTC-4
+                            ->format('d/m/Y H:i:s')
                         : null;
                     return $boss;
                 })

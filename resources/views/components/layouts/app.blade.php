@@ -8,8 +8,6 @@
 <html lang="pt-BR">
 <head>
         @include('partials.head')
-
-    <title>KosDB</title>
 </head>
 <body>
     {{ $slot }}
