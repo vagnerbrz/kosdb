@@ -5,12 +5,14 @@ namespace App\Livewire\Stats;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
+use App\Services\KosgladApiService;
+
 
 class Bosses extends Component
 {
 
     public array $bosses = [];
-
+    public $api =  'stats/raidboss/status';
 
     
     public function render()
@@ -20,12 +22,18 @@ class Bosses extends Component
 
     public function mount()
     {
-        $this->loadData();
+        $this->loadData(app(KosgladApiService::class));
     }
 
-    public function loadData()
+    public function loadData(KosgladApiService $api)
     {
-        $response = Http::withoutVerifying()->get('https://cdn2008.kosglad.com.br/api/stats/raidboss/status');
+
+
+        $token = $api->getToken();
+
+        $response = Http::withoutVerifying()
+        ->withToken($token)
+        ->get('https://cdn2008.kosglad.com.br/api/stats/raidboss/status');
 
         if ($response->successful()) {
             $this->bosses = collect($response->json())

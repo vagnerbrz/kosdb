@@ -4,6 +4,7 @@ namespace App\Livewire\Stats;
 
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
+use App\Services\KosgladApiService;
 
 class Sieges extends Component
 {
@@ -20,9 +21,19 @@ class Sieges extends Component
         $this->loadData();
     }
 
+    private function token(KosgladApiService $api)
+    {
+        $token = $api->getToken();
+        return $token;
+    }
+
     public function loadData()
     {
-    $response = Http::withoutVerifying()->get('https://cdn2008.kosglad.com.br/api/stats/siege');
+        $token = $this->token(app(KosgladApiService::class));
+
+        $response = Http::withoutVerifying()
+        ->withToken($token)
+        ->get('https://cdn2008.kosglad.com.br/api/stats/siege');
 
         if ($response->successful()) {
             $this->castelos = collect($response->json())
@@ -31,9 +42,9 @@ class Sieges extends Component
                     $castelo['sdate_formatted'] = \Carbon\Carbon::createFromTimestamp($castelo['sdate'])->timezone('-4')->format('d/m/Y H:i');
                     $castelo['attackers'] = [];
                     $castelo['defenders'] = [];
-
                     // Buscar atacantes e defensores
-                    $participants = Http::withoutVerifying()->get("https://cdn2008.kosglad.com.br/api/stats/siege/{$castelo['id']}/participants");
+                    $token = $this->token(app(KosgladApiService::class));
+                    $participants = Http::withoutVerifying()->withToken($token)->get("https://cdn2008.kosglad.com.br/api/stats/siege/{$castelo['id']}/participants");
 
                     if ($participants->successful()) {
                         foreach ($participants->json() as $clan) {

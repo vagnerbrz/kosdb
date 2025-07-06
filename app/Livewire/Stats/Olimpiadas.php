@@ -5,6 +5,7 @@ namespace App\Livewire\Stats;
 use Livewire\Component;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Collection;
+use App\Services\KosgladApiService;
 
 class Olimpiadas extends Component
 {
@@ -14,13 +15,17 @@ class Olimpiadas extends Component
 
     public function mount()
     {
-        $this->loadData();
+        $this->loadData(app(KosgladApiService::class));
     }
 
-    public function loadData()
+    public function loadData(KosgladApiService $api)
     {
         // $response = Http::get('https://cdn2008.kosglad.com.br/api/stats/olympiad/ranking');
-        $response = Http::withoutVerifying()->get('https://cdn2008.kosglad.com.br/api/stats/olympiad/ranking');
+        $token = $api->getToken();
+
+        $response = Http::withoutVerifying()
+        ->withToken($token)
+        ->get('https://cdn2008.kosglad.com.br/api/stats/olympiad/ranking');
         
 
         if ($response->successful()) {
@@ -48,7 +53,7 @@ class Olimpiadas extends Component
 
     public function poll()
     {
-        $this->loadData(); // Atualiza os dados via API
+        $this->loadData(app(KosgladApiService::class)); // Atualiza os dados via API
     }
 
     public function render()

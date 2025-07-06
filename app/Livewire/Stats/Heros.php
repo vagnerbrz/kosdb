@@ -5,6 +5,7 @@ namespace App\Livewire\Stats;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
+use App\Services\KosgladApiService;
 
 class Heros extends Component
 {
@@ -14,7 +15,7 @@ class Heros extends Component
 
     public function mount()
     {
-        $this->loadData();
+        $this->loadData(app(KosgladApiService::class));
     }
 
     public function render()
@@ -22,10 +23,14 @@ class Heros extends Component
         return view('livewire.stats.heros');
     }
 
-    public function loadData()
+    public function loadData(KosgladApiService $api)
     {
         // $response = Http::get('https://cdn2008.kosglad.com.br/api/stats/olympiad/ranking');
-        $response = Http::withoutVerifying()->get('https://cdn2008.kosglad.com.br/api/stats/olympiad/heroes/current');
+        $token = $api->getToken();
+
+        $response = Http::withoutVerifying()
+        ->withToken($token)
+        ->get('https://cdn2008.kosglad.com.br/api/stats/olympiad/heroes/current');
         
 
         if ($response->successful()) {
