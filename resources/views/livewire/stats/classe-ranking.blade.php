@@ -21,7 +21,7 @@
                         </a>
                     </li>
                     <li class="inline-flex items-center">
-                        <a href="{{ route('home') }}"
+                        <a href="{{ route('olimpiadas') }}"
                             class="inline-flex items-center text-sm font-medium text-zinc-700 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-white">
                             <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="currentColor" viewBox="0 0 20 20">

@@ -7,6 +7,7 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Collection;
 use Carbon\Carbon;
+use App\Services\KosgladApiService;
 
 class ClasseRanking extends Component
 {
@@ -19,13 +20,17 @@ class ClasseRanking extends Component
     {
         $this->id = $id;
         $this->className = self::className($id);
-        $this->loadData();
+        $this->loadData(app(KosgladApiService::class));
         
     }
 
-    public function loadData()
+    public function loadData(KosgladApiService $api)
     {
-        $response = Http::withoutVerifying()->get('https://cdn2008.kosglad.com.br/api/stats/olympiad/ranking');
+        $token = $api->getToken();
+
+        $response = Http::withoutVerifying()
+        ->withToken($token)
+        ->get('https://cdn2008.kosglad.com.br/api/stats/olympiad/ranking');
 
         if ($response->successful()) {
             $allPlayers = collect($response->json());
@@ -58,7 +63,7 @@ class ClasseRanking extends Component
 
     public function poll()
     {
-        $this->loadData(); // Atualiza os dados via API
+        $this->loadData(app(KosgladApiService::class)); // Atualiza os dados via API
     }
 
     public function render()

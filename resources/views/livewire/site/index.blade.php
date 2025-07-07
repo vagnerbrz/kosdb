@@ -51,7 +51,7 @@
                     <div class="flex flex-col justify-between p-4 leading-normal">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Boss</h5>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Status, horários de spawn e filtros avançados para não perder nenhum chefe!</p>
-                    <p class="text-yellow-500 text-sm italic">Em breve mais atualização</p>
+                    <p class="text-yellow-500 text-sm italic">Em breve novos recursos</p>
                     </div>
                 </a>
             </div>
