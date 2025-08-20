@@ -150,7 +150,7 @@
         const tick = () => {
           const now = Math.floor(Date.now()/1000);
           let diff = unixTs - now;
-          if (diff <= 0) { this.label = 'Começando!'; clearInterval(this.t); return; }
+          if (diff <= 0) { this.label = 'Começou!'; clearInterval(this.t); return; }
           const d = Math.floor(diff/86400); diff %= 86400;
           const h = Math.floor(diff/3600); diff %= 3600;
           const m = Math.floor(diff/60);   const s = diff%60;

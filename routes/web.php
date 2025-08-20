@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 // })->name('home');
 
 Route::get('/', Index::class)->name('home')->middleware(\App\Http\Middleware\TrackVisitorCount::class);
+Route::any('{any}', function () {
+    return redirect('/');
+})->where('any', '.*');
+
 Route::get('/views', Views::class)->name('views');
 
 Route::get('olimpiadas', Olimpiadas::class)->name('olimpiadas');
@@ -26,6 +30,8 @@ Route::get('olimpiadas/classe/{id}', ClasseRanking::class)->name('classe.ranking
 Route::get('heros', Heros::class)->name('heros');
 Route::get('bosses', Bosses::class)->name('bosses');
 Route::get('sieges', Sieges::class)->name('sieges');
+
+
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
