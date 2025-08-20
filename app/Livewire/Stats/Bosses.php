@@ -40,10 +40,10 @@ class Bosses extends Component
     public function loadData(KosgladApiService $api)
     {
 
-        // $token = $api->getToken();
+        $token = $api->getToken();
 
         $response = Http::withoutVerifying()
-        ->withToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYwOSwibG9naW4iOiJrYXJpbG93IiwiaWF0IjoxNzU1NjIwMDM1LCJleHAiOjE3NTU2NjMyMzV9.iNree01gIIlZcASmMxVw7jxTHlz0UajIWcuDOcKGCk0")
+        ->withToken($token)
         ->withHeaders([
                     'x-app-signature' => 'db4d78a29d353e2de33923f19c370ef2400a6b64967c037168016970b7b3fb33',
                     'Accept'          => 'application/json',

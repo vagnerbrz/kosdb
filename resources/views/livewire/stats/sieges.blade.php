@@ -5,6 +5,10 @@
                 class="justify-center m-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-3xl dark:text-white">
                 <span class="text-transparent bg-clip-text bg-gradient-to-r to-green-400 from-sky-400">Sieges</span>
             </h4>
+            <x-breadcrumb :items="[
+            ['label' => 'Home', 'url' => route('home'), 'icon' => 'home'],
+            ['label' => 'Sieges', 'url' => route('sieges')],
+        ]" />
         </div>
     </div>
 
@@ -15,18 +19,6 @@
   <div class="mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
     <div class="text-sm text-zinc-600 dark:text-zinc-400">
       Próximas guerras de castelo • fique de olho!
-    </div>
-    <div class="flex items-center gap-2 w-full sm:w-auto">
-      <input
-        type="search"
-        wire:model.live.debounce.300ms="q"
-        placeholder="Buscar por castelo, clã, aliança…"
-        class="w-full sm:w-80 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-2 text-sm text-zinc-800 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-sky-400"
-      />
-      <label class="inline-flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300">
-        <input type="checkbox" wire:model.live="onlyUpcoming" class="rounded border-zinc-300 dark:border-zinc-700">
-        Só próximas
-      </label>
     </div>
   </div>
 
@@ -129,10 +121,10 @@
             {{-- rodapé --}}
             <div class="mt-5 flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400">
               <span>Última atualização: {{ now()->format('d/m H:i') }}</span>
-              <a href="{{ route('sieges') }}" class="inline-flex items-center gap-1 hover:text-sky-600 dark:hover:text-sky-400">
+              {{-- <a href="{{ route('sieges') }}" class="inline-flex items-center gap-1 hover:text-sky-600 dark:hover:text-sky-400">
                 Detalhes
                 <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </a>
+              </a> --}}
             </div>
           </div>
         </div>

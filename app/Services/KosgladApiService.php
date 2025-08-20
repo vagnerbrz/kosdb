@@ -27,7 +27,7 @@ class KosgladApiService
         //     return $response->json()['token'] ?? null;
 
         // });
-        return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYwOSwibG9naW4iOiJrYXJpbG93IiwiaWF0IjoxNzU1NjIwMDM1LCJleHAiOjE3NTU2NjMyMzV9.iNree01gIIlZcASmMxVw7jxTHlz0UajIWcuDOcKGCk0";
+        return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYwOSwibG9naW4iOiJrYXJpbG93IiwiaWF0IjoxNzU1Njg3MzU5LCJleHAiOjE3NTU3MzA1NTl9.teCx7NnlkvNx5gZCc-jBZICIRQCr9HCJHi6RwL5am4I";
     }
 
     public function getAuthenticated(string $endpoint)
@@ -40,6 +40,6 @@ class KosgladApiService
     //         ])
     //         ->withToken($token)
     //         ->get("https://cdn2008.kosglad.com.br/api/{$endpoint}");
-        return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYwOSwibG9naW4iOiJrYXJpbG93IiwiaWF0IjoxNzU1NjIwMDM1LCJleHAiOjE3NTU2NjMyMzV9.iNree01gIIlZcASmMxVw7jxTHlz0UajIWcuDOcKGCk0";
+        return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYwOSwibG9naW4iOiJrYXJpbG93IiwiaWF0IjoxNzU1Njg3MzU5LCJleHAiOjE3NTU3MzA1NTl9.teCx7NnlkvNx5gZCc-jBZICIRQCr9HCJHi6RwL5am4I";
     }
 }

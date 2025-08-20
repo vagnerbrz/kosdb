@@ -16,7 +16,11 @@
                 Última atualização: <span class="font-medium">{{ $lastUpdated }}</span>
             </span>
         </div>
-
+        <x-breadcrumb :items="[
+            ['label' => 'Home', 'url' => route('home'), 'icon' => 'home'],
+            ['label' => 'Olimpíadas', 'url' => route('olimpiadas')],
+            ['label' => $className, 'url' => null], // página atual
+        ]" />
     </div>
 
     {{-- Conteúdo --}}

@@ -16,6 +16,10 @@
             <h4 class="justify-center m-4 text-4xl font-extrabold leading-none tracking-tight text-zinc-900 md:text-5xl lg:text-3xl dark:text-white">
                 <span class="text-transparent bg-clip-text bg-gradient-to-r to-green-400 from-sky-400">Bosses</span>
             </h4>
+            <x-breadcrumb :items="[
+            ['label' => 'Home', 'url' => route('home'), 'icon' => 'home'],
+            ['label' => 'Bosses', 'url' => route('bosses')],
+        ]" />
         </div>
     </div>
 

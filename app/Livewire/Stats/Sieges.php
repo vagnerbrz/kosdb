@@ -32,7 +32,7 @@ class Sieges extends Component
     public function loadData()
     {
         // Recomendado: usar o service autenticado (descomente quando quiser)
-        // $token = $this->token(app(KosgladApiService::class));
+        $token = $this->token(app(KosgladApiService::class));
         // $response = Http::withoutVerifying()
         //     ->withToken($token)
         //     ->withHeaders([
@@ -43,8 +43,11 @@ class Sieges extends Component
         //     ->get('https://cdn2008.kosglad.com.br/api/stats/siege');
 
         // Temporário: chamada direta mantendo o que você tinha
+
+
+        
         $response = Http::withoutVerifying()
-            ->withToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYwOSwibG9naW4iOiJrYXJpbG93IiwiaWF0IjoxNzU1NjIwMDM1LCJleHAiOjE3NTU2NjMyMzV9.iNree01gIIlZcASmMxVw7jxTHlz0UajIWcuDOcKGCk0")
+        ->withToken($token)
             ->withHeaders([
                 'x-app-signature' => '3f598c6a1b8c3944c87170d99c33622e9b76781d4eb6b818dc47115ebd9b865e',
                 'Accept'          => 'application/json',
@@ -130,9 +133,9 @@ class Sieges extends Component
                         $signature = '3713002ff56fe625088345da075bd5deadf76703c130a74321f5f298a2b42d4b';
                         break;
                 }
-
+                $token = $this->token(app(KosgladApiService::class));
                 $participants = Http::withoutVerifying()
-                    ->withToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYwOSwibG9naW4iOiJrYXJpbG93IiwiaWF0IjoxNzU1NjIwMDM1LCJleHAiOjE3NTU2NjMyMzV9.iNree01gIIlZcASmMxVw7jxTHlz0UajIWcuDOcKGCk0")
+                    ->withToken($token)
                     ->withHeaders([
                         'x-app-signature' => $signature,
                         'Accept'          => 'application/json',

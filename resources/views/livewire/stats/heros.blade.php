@@ -8,6 +8,10 @@
                 class="justify-center m-4 text-4xl font-extrabold leading-none tracking-tight text-zinc-900 md:text-5xl lg:text-3xl dark:text-white">
                 <span class="text-transparent bg-clip-text bg-gradient-to-r to-amber-400 from-yellow-600">Heros</span>
             </h4>
+            <x-breadcrumb :items="[
+            ['label' => 'Home', 'url' => route('home'), 'icon' => 'home'],
+            ['label' => 'Heros', 'url' => route('heros')],
+        ]" />
         </div>
     </div>
     {{-- grade de cards --}}
@@ -16,7 +20,7 @@
             <div class="relative group">
   {{-- glow atrás --}}
   <div
-    class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-amber-200 via-amber-500 to-yellow-300 opacity-30 blur-2xl group-hover:opacity-60 transition"
+    class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-amber-200 via-amber-500 to-yellow-300 opacity-10 blur-2xl group-hover:opacity-90 transition"
   ></div>
 
   {{-- borda gradiente + card --}}

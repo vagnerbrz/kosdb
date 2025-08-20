@@ -24,9 +24,10 @@ class Olimpiadas extends Component
 
     public function loadData(KosgladApiService $api): void
     {
-        // Usa o service autenticado (Bearer + x-app-signature já aplicados)
+        $token = $api->getToken();
+
         $response = Http::withoutVerifying()
-        ->withToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYwOSwibG9naW4iOiJrYXJpbG93IiwiaWF0IjoxNzU1NjIwMDM1LCJleHAiOjE3NTU2NjMyMzV9.iNree01gIIlZcASmMxVw7jxTHlz0UajIWcuDOcKGCk0")
+        ->withToken($token)
         ->withHeaders([ 
             'x-app-signature' => '6d3b5711416e919104ca64c3281867cfec6d49788a85ce3681491a66a24cba7d', 
             'Accept' => 'application/json', 

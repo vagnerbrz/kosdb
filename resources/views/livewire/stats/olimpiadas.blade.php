@@ -66,17 +66,36 @@ x-data="{
     }"
     
     class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div>
-                <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-emerald-500">
-                    Ranking das Olimpíadas
-                </h1>
-                <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-                    Top 3 jogadores por classe • Atualizado às {{ $lastUpdated }}
-                </p>
-            </div>
 
-            <div class="flex items-center gap-3">
+            {{-- Header / Hero compacto --}}
+    <div class="flex flex-col items-center text-center px-4 pt-6">
+        <h4 class="m-2 text-3xl md:text-5xl lg:text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-400">
+                Ranking das Olimpíadas
+            </span>
+        </h4>
+
+        <div class="mt-2 flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400">
+            <span class="inline-flex items-center gap-1">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                Última atualização: <span class="font-medium">{{ $lastUpdated }}</span>
+            </span>
+        </div>
+        <x-breadcrumb :items="[
+            ['label' => 'Home', 'url' => route('home'), 'icon' => 'home'],
+            ['label' => 'Olimpíadas', 'url' => route('olimpiadas')],
+        ]" />
+    </div>
+
+        {{-- Barra de ações --}}
+        <div class="flex items-center justify-between gap-4 mb-4">
+            <div class="text-sm text-zinc-600 dark:text-zinc-400">
+                Top 3 jogadores por classe • Atualizado às <span class="font-medium text-zinc-800 dark:text-zinc-200">{{ $lastUpdated }}</span>
+            </div>
+            <div class="flex items-center gap-2">
                 <button
                     @click="copyAll()"
                     class="inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm ring-1 ring-inset ring-zinc-300 hover:bg-zinc-100
