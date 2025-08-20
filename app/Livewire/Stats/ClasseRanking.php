@@ -26,10 +26,15 @@ class ClasseRanking extends Component
 
     public function loadData(KosgladApiService $api)
     {
-        $token = $api->getToken();
+        // $token = $api->getToken();
 
         $response = Http::withoutVerifying()
-        ->withToken($token)
+        ->withToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYwOSwibG9naW4iOiJrYXJpbG93IiwiaWF0IjoxNzU1NjIwMDM1LCJleHAiOjE3NTU2NjMyMzV9.iNree01gIIlZcASmMxVw7jxTHlz0UajIWcuDOcKGCk0")
+        ->withHeaders([
+                    'x-app-signature' => '6d3b5711416e919104ca64c3281867cfec6d49788a85ce3681491a66a24cba7d',
+                    'Accept'          => 'application/json',
+                    'Content-Type'    => 'application/json',
+                ])
         ->get('https://cdn2008.kosglad.com.br/api/stats/olympiad/ranking');
 
         if ($response->successful()) {

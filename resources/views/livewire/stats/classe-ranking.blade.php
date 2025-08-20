@@ -1,95 +1,122 @@
 <div>
-    <div class="flex flex-col">
-        <div class="justify-items-center">
-            <h4 class="justify-center m-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-3xl dark:text-white">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r to-green-400 from-sky-400">{{ $className }}</span>
-            </h4>
-            <p class="m-2 text-sm text-gray-500">Última atualização: {{ $lastUpdated }}</p>
+    {{-- Header / Hero compacto --}}
+    <div class="flex flex-col items-center text-center px-4 pt-6">
+        <h4 class="m-2 text-3xl md:text-5xl lg:text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-400">
+                {{ $className }}
+            </span>
+        </h4>
 
-
-            <nav class="flex" aria-label="Breadcrumb">
-                <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-                    <li class="inline-flex items-center">
-                        <a href="{{ route('home') }}"
-                            class="inline-flex items-center text-sm font-medium text-zinc-700 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-white">
-                            <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
-                            </svg>
-                            Home
-                        </a>
-                    </li>
-                    <li class="inline-flex items-center">
-                        <a href="{{ route('olimpiadas') }}"
-                            class="inline-flex items-center text-sm font-medium text-zinc-700 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-white">
-                            <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
-                            </svg>
-                            Olimpíadas
-                        </a>
-                    </li>
-                    <li aria-current="page">
-                        <div class="flex items-center">
-                            <svg class="rtl:rotate-180 w-3 h-3 text-zinc-400 mx-1" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 9 4-4-4-4" />
-                            </svg>
-                            <span class="ms-1 text-sm font-medium text-zinc-500 md:ms-2 dark:text-zinc-400">{{ $className }}</span>
-                        </div>
-                    </li>
-                </ol>
-            </nav>
-
+        <div class="mt-2 flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400">
+            <span class="inline-flex items-center gap-1">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                Última atualização: <span class="font-medium">{{ $lastUpdated }}</span>
+            </span>
         </div>
+
     </div>
 
-    <div class="w-full max-w-4xl mx-auto px-4 py-8">
-        <div class="grid grid-cols-1 gap-4 p-4 ">
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg" wire:poll.30s="poll">
-                <table class="w-full text-sm text-left rtl:text-right text-zinc-500 dark:text-zinc-400">
-                    <thead class="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">
-                                Nick
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Clã
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Ally
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Pontos
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($players as $player)
-                            <tr
-                                class="bg-white border-b dark:bg-zinc-800 dark:border-zinc-700 border-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-600">
-                                <th scope="row"
-                                    class="px-4 py-2 font-bold text-zinc-900 whitespace-nowrap dark:text-white">
-                                    {{ $player['char_name'] }}
-                                </th>
-                                <td class="px-4 py-2">
-                                    {{ $player['clan_name'] }}
-                                </td>
-                                <td class="px-4 py-2">
-                                    {{ $player['ally_name']  ?? '-'}}
-                                </td>
-                                <td class="px-4 py-2 text-base font-semibold text-green-600 dark:text-green-400">
-                                    {{ $player['olympiad_point'] ?? '-' }}
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+    {{-- Conteúdo --}}
+    <div class="w-full max-w-5xl mx-auto px-4 py-8">
+        {{-- Barra de ações --}}
+        <div class="flex items-center justify-between gap-4 mb-4">
+            <div class="text-sm text-zinc-600 dark:text-zinc-400">
+                Top jogadores da classe <span class="font-medium text-zinc-800 dark:text-zinc-200">{{ $className }}</span>
             </div>
+            <div class="flex items-center gap-2">
+                <button wire:click="poll"
+                        class="inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm ring-1 ring-inset ring-zinc-300 hover:bg-zinc-100 dark:text-zinc-200 dark:ring-zinc-700 dark:hover:bg-zinc-800 transition">
+                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 4v6h-6"/><path d="M20.49 15A9 9 0 1 1 18 8.51"/>
+                    </svg>
+                    Atualizar
+                </button>
+            </div>
+        </div>
 
+        {{-- Tabela (desktop) --}}
+        <div class="hidden md:block relative overflow-x-auto shadow-sm ring-1 ring-zinc-200/70 dark:ring-zinc-800/70 sm:rounded-2xl"
+             wire:poll.30s="poll">
+            <table class="w-full text-sm text-left text-zinc-600 dark:text-zinc-300">
+                <thead class="text-xs uppercase bg-zinc-50/80 dark:bg-zinc-800/70 text-zinc-700 dark:text-zinc-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">Nick</th>
+                        <th scope="col" class="px-6 py-3">Clã</th>
+                        <th scope="col" class="px-6 py-3">Ally</th>
+                        <th scope="col" class="px-6 py-3 text-right">Pontos</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-zinc-200/70 dark:divide-zinc-800/70 bg-white dark:bg-zinc-900">
+                    @forelse ($players as $player)
+                        <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/60 transition">
+                            <th scope="row" class="px-6 py-3 font-semibold text-zinc-900 dark:text-white">
+                                {{ $player['char_name'] }}
+                            </th>
+                            <td class="px-6 py-3">
+                                {{ $player['clan_name'] }}
+                            </td>
+                            <td class="px-6 py-3">
+                                {{ $player['ally_name'] ?? '—' }}
+                            </td>
+                            <td class="px-6 py-3 text-right font-semibold text-emerald-600 dark:text-emerald-400">
+                                {{ $player['olympiad_point'] ?? '—' }}
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="4" class="px-6 py-6 text-center text-zinc-500">
+                                Nenhum jogador encontrado.
+                            </td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+
+            {{-- estado de loading --}}
+            <div wire:loading class="absolute inset-0 grid place-items-center bg-white/50 dark:bg-black/30 backdrop-blur-sm rounded-2xl">
+                <div class="flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300">
+                    <svg class="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke-width="2" class="opacity-25"/><path d="M4 12a8 8 0 0 1 8-8" stroke-width="2" class="opacity-75"/></svg>
+                    Atualizando…
+                </div>
+            </div>
+        </div>
+
+        {{-- Cards (mobile) --}}
+        <div class="md:hidden space-y-3" wire:poll.30s="poll">
+            @forelse ($players as $player)
+                <div class="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-4">
+                    <div class="flex items-start justify-between gap-3">
+                        <div>
+                            <div class="text-base font-semibold text-zinc-900 dark:text-white">
+                                {{ $player['char_name'] }}
+                            </div>
+                            <div class="mt-1 text-xs text-zinc-500">
+                                Clã: <span class="text-zinc-700 dark:text-zinc-300">{{ $player['clan_name'] ?? '—' }}</span>
+                                <span class="px-1.5">•</span>
+                                Ally: <span class="text-zinc-700 dark:text-zinc-300">{{ $player['ally_name'] ?? '—' }}</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs uppercase tracking-wide text-zinc-500">Pontos</div>
+                            <div class="text-lg font-bold text-emerald-600 dark:text-emerald-400">
+                                {{ $player['olympiad_point'] ?? '—' }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @empty
+                <p class="text-center text-sm text-zinc-500">Nenhum jogador encontrado.</p>
+            @endforelse
+
+            <div wire:loading class="flex justify-center">
+                <div class="inline-flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300">
+                    <svg class="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke-width="2" class="opacity-25"/><path d="M4 12a8 8 0 0 1 8-8" stroke-width="2" class="opacity-75"/></svg>
+                    Atualizando…
+                </div>
+            </div>
         </div>
     </div>
 </div>

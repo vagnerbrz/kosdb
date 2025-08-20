@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Olimpiadas\Ranking;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
@@ -20,6 +21,7 @@ Route::get('/', Index::class)->name('home')->middleware(\App\Http\Middleware\Tra
 Route::get('/views', Views::class)->name('views');
 
 Route::get('olimpiadas', Olimpiadas::class)->name('olimpiadas');
+Route::get('ranking', Ranking::class)->name('olimpiadas.ranking');
 Route::get('olimpiadas/classe/{id}', ClasseRanking::class)->name('classe.ranking');
 Route::get('heros', Heros::class)->name('heros');
 Route::get('bosses', Bosses::class)->name('bosses');

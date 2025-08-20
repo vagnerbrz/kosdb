@@ -26,10 +26,15 @@ class Heros extends Component
     public function loadData(KosgladApiService $api)
     {
         // $response = Http::get('https://cdn2008.kosglad.com.br/api/stats/olympiad/ranking');
-        $token = $api->getToken();
+        // $token = $api->getToken();
 
         $response = Http::withoutVerifying()
-        ->withToken($token)
+        ->withToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYwOSwibG9naW4iOiJrYXJpbG93IiwiaWF0IjoxNzU1NjIwMDM1LCJleHAiOjE3NTU2NjMyMzV9.iNree01gIIlZcASmMxVw7jxTHlz0UajIWcuDOcKGCk0")
+        ->withHeaders([
+                    'x-app-signature' => '93822c8653570d36e7728e2e05148eed5b18541b23ca1f24bd071002f62dd5d6',
+                    'Accept'          => 'application/json',
+                    'Content-Type'    => 'application/json',
+                ])
         ->get('https://cdn2008.kosglad.com.br/api/stats/olympiad/heroes/current');
         
 
