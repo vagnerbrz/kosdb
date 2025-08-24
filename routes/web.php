@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 // })->name('home');
 
 Route::get('/', Index::class)->name('home')->middleware(\App\Http\Middleware\TrackVisitorCount::class);
-Route::any('{any}', function () {
-    return redirect('/');
-})->where('any', '.*');
+// Route::any('{any}', function () {
+//     return redirect('/');
+// })->where('any', '.*');
 
 Route::get('/views', Views::class)->name('views');
 
