@@ -15,6 +15,7 @@ x-data="{
             
     }"
     x-init="init()">
+    
     <div x-data="{
         classes: @js($groupedPlayers ?? []),
 
@@ -66,7 +67,15 @@ x-data="{
     }"
     
     class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-
+                <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
+        <svg class="shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <span class="sr-only">Info</span>
+        <div class="ms-3 text-sm font-medium">
+            O site ficará on até as  <a href="#" class="font-semibold underline hover:no-underline">22:20</a>.
+        </div>
+        </div>
             {{-- Header / Hero compacto --}}
     <div class="flex flex-col items-center text-center px-4 pt-6">
         <h4 class="m-2 text-3xl md:text-5xl lg:text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
@@ -84,6 +93,7 @@ x-data="{
                 Última atualização: <span class="font-medium">{{ $lastUpdated }}</span>
             </span>
         </div>
+
         <x-breadcrumb :items="[
             ['label' => 'Home', 'url' => route('home'), 'icon' => 'home'],
             ['label' => 'Olimpíadas', 'url' => route('olimpiadas')],
